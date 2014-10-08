@@ -36,7 +36,7 @@ server.route([{
             path: 'public/css'
         }
     }
-},,{
+},{
     method: 'GET',
     path: '/img/{filename*}',
     handler: {
@@ -47,5 +47,5 @@ server.route([{
 }]);
 
 server.start(function () {
-    console.log('Server running at:', server.info.uri);
+    //console.log('Server running at:', server.info.uri);
 });
