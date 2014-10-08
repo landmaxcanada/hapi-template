@@ -1,0 +1,15 @@
+{
+  "name": "lm_hapi_template",
+  "version": "0.0.2",
+  "description": "lm-hapi starting scaffold",
+  "main": "server.js",
+  "author": "James Swansburg",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^6.11.1",
+    "tsd": "^0.5.7"
+  }
+}
