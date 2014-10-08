@@ -44,6 +44,16 @@ server.route([{
             path: 'public/img'
         }
     }
+},{
+    method: 'GET',
+    path: '/bower_components/{filename*}',
+    handler: {
+        directory: {
+            path: 'bower_components',
+            listing: true,
+            defaultExtension: 'html'
+        }
+    }
 }]);
 
 server.start(function () {
