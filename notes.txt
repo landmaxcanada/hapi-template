@@ -1,0 +1,5 @@
+Load TSD
+https://www.npmjs.org/package/tsd
+
+tsd query node -a install
+tsd query hapi -a install

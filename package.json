@@ -9,6 +9,7 @@
   },
   "license": "ISC",
   "dependencies": {
+    "azure": "^0.10.0",
     "hapi": "^6.11.1",
     "tsd": "^0.5.7"
   }
