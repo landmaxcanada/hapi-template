@@ -1,4 +1,4 @@
 hapi-template
 =============
 
-Starting point for Hapi based web sites
+Just a simple starting point for Hapi based web sites using static files (NOT MV*)
