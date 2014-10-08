@@ -13,17 +13,35 @@ server.route([{
     }
 },{
     method: 'GET',
-    path: '/oauth2callback.html',
-    handler: function (request, reply) {
-        reply.file('/public/oauth2callback.html');
-    }
-},{
-    method: 'GET',
     path: '/{filename}',
     handler: {
         file: function (request) {
             console.log('request.params.filename: ' + '/public/' + request.params.filename);
             return request.params.filename;
+        }
+    }
+},{
+    method: 'GET',
+    path: '/js/{filename*}',
+    handler: {
+        directory: {
+            path: 'public/js'
+        }
+    }
+},{
+    method: 'GET',
+    path: '/css/{filename*}',
+    handler: {
+        directory: {
+            path: 'public/css'
+        }
+    }
+},,{
+    method: 'GET',
+    path: '/img/{filename*}',
+    handler: {
+        directory: {
+            path: 'public/img'
         }
     }
 }]);
