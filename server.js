@@ -9,7 +9,7 @@ server.route([{
     method: 'GET',
     path: '/',
     handler: function (request, reply) {
-        reply.file('/public/main.html');
+        reply.file('/public/index.html');
     }
 },{
     method: 'GET',
