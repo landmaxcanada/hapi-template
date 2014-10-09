@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Hapi Scaffold</title>
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
+		<script src="js/index.js"></script>
+		<style>
+		html, body { margin: 0; padding: 0; overflow: hidden !important; font-family: sans-serif; background-color: black; }
+		.full { position: absolute !important; bottom: 0; left: 0; right: 0; top: 0; }
+		.fullImg { max-width: 100%; max-height: 78%; bottom: 0; left: 0; margin: auto; overflow: auto; position: fixed; right: 0; top: 0; }
+		.hide { display: none; }
+		.hidden { visibility: hidden; }
+
+		div#wrapper { position: absolute; top: 1px; right: 1px; bottom: 1px; left: 1px; text-align: center; background-color: white; }
+	</style>
+	</head>
+	<body>
+		<h1>Simple Hapi Scaffold</h1>
+		<img src="img/CorporateStupidity.jpg" alt="Test Cover Img" />
+		<script>
+			/// <reference path="../typings/zepto/zepto.d.ts" />
+		</script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
+		<script src="../bower_components/platform/platform.js"></script>
+		<link rel="import" href="../bower_components/google-signin/google-signin.html">
+		<google-signin clientId="1088990234582-4sedihf5lj6p29t32n2artob8ck265mg.apps.googleusercontent.com" scopes="https://www.googleapis.com/auth/drive"></google-signin>
+		<script>
+			var lm = {};
+			document.addEventListener("google-signin-success", function(e) {
+        		// Access the GAPI instance passed back from authorization
+				lm.e = e;
+				lm.detail = e.detail;
+        		lm.gapi = e.detail.gapi;
+			});
+		</script>
+	</body>
+
+</html>
