@@ -12,11 +12,21 @@
 		<h1>Simple Hapi Scaffold</h1>
 		<img src="img/CorporateStupidity.jpg" alt="Test Cover Img" />
 		<script>
-            /// <reference path="../typings/zepto/zepto.d.ts" />
-        </script>
+			/// <reference path="../typings/zepto/zepto.d.ts" />
+		</script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
 		<script src="../bower_components/platform/platform.js"></script>
 		<link rel="import" href="../bower_components/google-signin/google-signin.html">
-		<google-signin clientId="418995450751-bjptf14i3jrgmsa3m2ddv95ojou9ij1a.apps.googleusercontent.com" scopes="profile"></google-signin>
+		<google-signin clientId="1088990234582-4sedihf5lj6p29t32n2artob8ck265mg.apps.googleusercontent.com" scopes="https://www.googleapis.com/auth/drive"></google-signin>
+		<script>
+			var lm = {};
+			document.addEventListener("google-signin-success", function(e) {
+        		// Access the GAPI instance passed back from authorization
+				lm.e = e;
+				lm.detail = e.detail;
+        		lm.gapi = e.detail.gapi;
+			});
+		</script>
 	</body>
+
 </html>

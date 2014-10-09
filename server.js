@@ -13,12 +13,9 @@ server.route([{
     }
 },{
     method: 'GET',
-    path: '/{filename}',
-    handler: {
-        file: function (request) {
-            console.log('request.params.filename: ' + '/public/' + request.params.filename);
-            return request.params.filename;
-        }
+    path: '/oauth2callback.html',
+    handler: function (request, reply) {
+        reply.file('/public/oauth2callback.html');
     }
 },{
     method: 'GET',
