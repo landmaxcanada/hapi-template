@@ -5,36 +5,80 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Hapi Scaffold</title>
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-		<link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
-		<script src="js/index.js"></script>
 		<style>
-		html, body { margin: 0; padding: 0; overflow: hidden !important; font-family: sans-serif; background-color: black; }
-		.full { position: absolute !important; bottom: 0; left: 0; right: 0; top: 0; }
-		.fullImg { max-width: 100%; max-height: 78%; bottom: 0; left: 0; margin: auto; overflow: auto; position: fixed; right: 0; top: 0; }
-		.hide { display: none; }
-		.hidden { visibility: hidden; }
-
-		div#wrapper { position: absolute; top: 1px; right: 1px; bottom: 1px; left: 1px; text-align: center; background-color: white; }
-	</style>
+			html, body { margin: 0; padding: 0; overflow: hidden !important; font-family: sans-serif; background-color: black; }
+			.full { position: absolute !important; bottom: 0; left: 0; right: 0; top: 0; }
+			.fullImg { max-width: 100%; max-height: 78%; bottom: 0; left: 0; margin: auto; overflow: auto; position: fixed; right: 0; top: 0; }
+			.hide { display: none; }
+			.hidden { visibility: hidden; }
+			.whiteOutline{ text-shadow:0px 0px 8px white}
+			div#wrapper { position: absolute; top: 1px; right: 1px; bottom: 1px; left: 1px; text-align: center; background-color: white; }
+		
+		google-signin {position: absolute; top: 10px; right: 10px; z-index: 1000}
+		</style>
 	</head>
-	<body>
-		<h1>Simple Hapi Scaffold</h1>
-		<img src="img/CorporateStupidity.jpg" alt="Test Cover Img" />
+	<body class="full">
+		<div id="wrapper">
+			<div id="loader" style="z-index:0">
+				<img src="img/CorporateStupidity.jpg" class="fullImg" style="z-index:1" />
+				<h1 class="whiteOutline" style="position: relative; z-index:10">Landmax Realty</h1>
+			</div>
+			<div id="container"></div>
+		</div>
+		<script src="../bower_components/platform/platform.js"></script>
 		<script>
 			/// <reference path="../typings/zepto/zepto.d.ts" />
 		</script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
-		<script src="../bower_components/platform/platform.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>		
 		<link rel="import" href="../bower_components/google-signin/google-signin.html">
 		<google-signin clientId="1088990234582-4sedihf5lj6p29t32n2artob8ck265mg.apps.googleusercontent.com" scopes="https://www.googleapis.com/auth/drive"></google-signin>
 		<script>
 			var lm = {};
+			lm.el = {};
+			
+			function linkMain(){
+				
+				var importMain = document.createElement('link');
+				importMain.id = 'mainImport'
+				importMain.rel = 'import';
+				importMain.href = 'main.html';
+				importMain.onload = function(e) {
+					var link = document.querySelector('#mainImport');
+    				var template = link.import.querySelector('template');
+    				lm.el.main = document.importNode(template.content, true);
+					$('div#loader').hide();
+    				document.querySelector('#container').appendChild(lm.el.main);
+					$('div#container').show();
+				};
+				importMain.onerror = function(e) {
+					console.log('Error Line 49');
+				};
+				document.head.appendChild(importMain);
+				
+			}
+			
 			document.addEventListener("google-signin-success", function(e) {
         		// Access the GAPI instance passed back from authorization
 				lm.e = e;
 				lm.detail = e.detail;
         		lm.gapi = e.detail.gapi;
+				
+				window.addEventListener('WebComponentsReady', function(e) {
+					console.log('WebComponentsReady');
+			  	});
+				
+				linkMain();
+							  
 			});
+			document.addEventListener("google-signed-out", function(e) {
+				$('div#container').hide();
+				$('div#loader').show();
+			});
+			
+		</script>
+		<!--<link rel="import" href="main.html">-->
+		<script>
+			
 		</script>
 	</body>
 
