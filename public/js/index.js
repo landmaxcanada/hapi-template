@@ -8,7 +8,7 @@ lm.gapi.client.load('plus', 'v1', function() {
 	});
 
 	request.execute(function(resp) {
-		console.log(resp);
+		console.log('plus: ' + resp);
 		lm.me = document.querySelector("#profile");
 		lm.me.model = {};
 		lm.me.model.profile = resp;
@@ -16,14 +16,13 @@ lm.gapi.client.load('plus', 'v1', function() {
 });
 
 lm.gapi.client.load('drive', 'v2', function() {
-	var request = lm.gapi.client.plus.people.get({
-		'userId': 'me'
-	});
+	var request = lm.gapi.client.drive.about.get();
 
 	request.execute(function(resp) {
-		console.log(resp);
-		var t = document.querySelector("#profile");
+		console.log('drive: ' + resp);
+		lm.driveResp = resp;
+/*		lm.drive = document.querySelector("#profile");
 		t.model = {};
-		t.model.profile = resp;
+		t.model.profile = resp;*/
 	});
 });

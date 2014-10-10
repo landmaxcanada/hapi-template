@@ -5,6 +5,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Hapi Scaffold</title>
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
 		<style>
 			html, body { margin: 0; padding: 0; overflow: hidden !important; font-family: sans-serif; background-color: black; }
 			.full { position: absolute !important; bottom: 0; left: 0; right: 0; top: 0; }
@@ -29,13 +31,16 @@
 		<script>
 			/// <reference path="../typings/zepto/zepto.d.ts" />
 		</script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>		
+		<script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
 		<link rel="import" href="../bower_components/google-signin/google-signin.html">
 		<google-signin clientId="1088990234582-4sedihf5lj6p29t32n2artob8ck265mg.apps.googleusercontent.com" scopes="profile email https://www.googleapis.com/auth/drive"></google-signin>
-		<!--<google-signin clientId="1088990234582-4sedihf5lj6p29t32n2artob8ck265mg.apps.googleusercontent.com" scopes="https://www.googleapis.com/auth/drive"></google-signin>-->
+		<!--<google-signin clientId="1088990234582-4sedihf5lj6p29t32n2artob8ck265mg.apps.googleusercontent.com"
+		scopes="https://www.googleapis.com/auth/drive"></google-signin>-->
 		<script>
 			var lm = {};
 			lm.el = {};
+			lm.loaded = {};
+			lm.loaded.main = false;
 			
 			function linkMain(){
 				
@@ -56,6 +61,8 @@
 				};
 				document.head.appendChild(importMain);
 				
+				lm.loaded.main = true;
+				
 			}
 			
 			document.addEventListener("google-signin-success", function(e) {
@@ -64,23 +71,22 @@
 				lm.detail = e.detail;
         		lm.gapi = e.detail.gapi;
 				
-				window.addEventListener('WebComponentsReady', function(e) {
+				/*window.addEventListener('WebComponentsReady', function(e) {
 					console.log('WebComponentsReady');
-			  	});
-				
-				linkMain();
+			  	});*/
+				if(!lm.loaded.main){
+					linkMain();
+				}
 							  
 			});
 			document.addEventListener("google-signed-out", function(e) {
 				$('div#container').hide();
 				$('div#loader').show();
 			});
-			
 		</script>
 		<!--<link rel="import" href="main.html">-->
 		<script>
-			
-		</script>
+</script>
 	</body>
 
 </html>
